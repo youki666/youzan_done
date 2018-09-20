@@ -39,7 +39,7 @@ exports.htmlPlugin = function() {
         minify: {
           removeComments: true,
           collapseWhitespace: true,
-          removeAttributeQuotes: false
+          removeAttributeQuotes: true
         },
         chunksSortMode: 'dependency'
       })

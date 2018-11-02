@@ -23,8 +23,11 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.vue', '.json'],
     alias: {
-      'vue$': 'vue/dist/vue.esm.js',
+      'vue': 'vue/dist/vue.common.js',
       '@': resolve('src'),
+       'css': '@/modules/css',
+      'js':'@/modules/js',
+      'components':'@/components'
     }
   },
   module: {
@@ -32,7 +35,17 @@ module.exports = {
       {
         test: /\.vue$/,
         loader: 'vue-loader',
-        options: vueLoaderConfig
+        options: {
+                    loaders: {
+                        // Customize to your liking
+                        js: 'babel-loader',
+                        scss: [
+                            'style-loader',
+                            'css-loader',
+                            'sass-loader'
+                        ]
+                    }
+                }
       },
       {
         test: /\.js$/,
